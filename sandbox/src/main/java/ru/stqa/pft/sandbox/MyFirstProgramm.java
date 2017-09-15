@@ -15,7 +15,12 @@ public class MyFirstProgramm {
 
     Point p1=new Point(0,0);
     Point p2=new Point(2,2);
+
+    //Вычисления расстояния с помощью функции distanse
     System.out.println("Distance from p1 to p2 equals  " +distanse(p1,p2));
+
+    //вычисление расстояния с помощью метода  distanseToPoint в классе Point^:
+    System.out.println("Distance from p1 to p2 equals  "+p1.distanceToPoint(p2));
 
 
   }
