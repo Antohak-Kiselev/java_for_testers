@@ -15,7 +15,14 @@ import org.openqa.selenium.*;
 import static org.openqa.selenium.OutputType.*;
 
 public class ContactCreationTests {
+    FirefoxDriver wd;
 
+    @BeforeMethod
+    public void setUp() throws Exception {
+        System.setProperty("webdriver.gecko.driver", "D:\\geckodriver\\geckodriver.exe");
+        wd = new FirefoxDriver();
+        wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    }
     
     @Test
     public void ContactCreationTests() {
