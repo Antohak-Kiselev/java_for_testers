@@ -27,18 +27,9 @@ public class ApplicationManager {
     sessionHelper= new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
   }
-
-
-
-  @AfterMethod
-  public void tearDown() {
-    stop();
-  }
-
   public void stop() {
     wd.quit();
   }
-
   public GroupHelper getGroupHelper() {
     return groupHelper;
   }
