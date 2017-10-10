@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
@@ -15,9 +16,12 @@ app.getNavigationHelper().gotoHomePage();
    app.getContactHelper().createContact(new ContactData("erer","sdfdsf","sdfdsf","78787","sdfsadf@dsf","test1"));
 
   }
-   app.getContactHelper().setContact();
+   int before=app.getContactHelper().getContactCount();
+   app.getContactHelper().initContactModification();
    app.getContactHelper().deleteSelectedContact();
    app.getContactHelper().returnToHomePage();
 
+   int after=app.getContactHelper().getContactCount();
+   Assert.assertEquals(after,before-1);
   }
 }

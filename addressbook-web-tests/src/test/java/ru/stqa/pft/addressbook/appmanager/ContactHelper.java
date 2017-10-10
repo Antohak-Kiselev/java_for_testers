@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.List;
+
 /**
  * Created by Антон on 23.09.2017.
  */
@@ -47,7 +49,7 @@ public class ContactHelper extends  HelperBase{
    click(By.linkText("add new"));
   }
 
-  public void setContact(){
+  public void initContactModification(){
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 
@@ -69,5 +71,11 @@ public class ContactHelper extends  HelperBase{
 
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
+  }
+
+
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
+
   }
 }
