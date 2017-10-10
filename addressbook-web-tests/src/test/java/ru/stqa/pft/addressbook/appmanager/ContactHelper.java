@@ -85,6 +85,9 @@ public class ContactHelper extends  HelperBase{
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
+  public int getIdContactWithHelpIndex(int index){
+    return Integer.parseInt(wd.findElements(By.name("selected[]")).get(index).getAttribute("value"));
+  }
 
 
   public void initContactModificationById(int id) {
@@ -99,7 +102,8 @@ public class ContactHelper extends  HelperBase{
            List<WebElement> names_contact = element.findElements((By.tagName("td")));
             String lastname = names_contact.get(1).getText();
             String firstname = names_contact.get(2).getText();
-      ContactData contact=new ContactData(firstname,lastname,null,null,null,null);
+          int id=Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      ContactData contact=new ContactData(id,firstname,lastname,null,null,null,null);
       contacts.add(contact);
 
                  }

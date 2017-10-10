@@ -7,7 +7,26 @@ public class ContactData {
   private final String mobile_phone;
   private final String e_mail;
   private  String group;
-  private int id;
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  private  int  id;
+
+
+  public int getId() {
+    return id;
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "first_name='" + first_name + '\'' +
+            ", last_name='" + last_name + '\'' +
+            ", id=" + id +
+            '}';
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -16,6 +35,7 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
+    if (id != that.id) return false;
     if (first_name != null ? !first_name.equals(that.first_name) : that.first_name != null) return false;
     return last_name != null ? last_name.equals(that.last_name) : that.last_name == null;
   }
@@ -24,32 +44,30 @@ public class ContactData {
   public int hashCode() {
     int result = first_name != null ? first_name.hashCode() : 0;
     result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
+    result = 31 * result + id;
     return result;
   }
 
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "first_name='" + first_name + '\'' +
-            ", last_name='" + last_name + '\'' +
-            '}';
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public ContactData(String first_name, String last_name, String address, String mobile_phone, String e_mail, String group) {
+  public ContactData(int id, String first_name, String last_name, String address, String mobile_phone, String e_mail, String group) {
     this.first_name = first_name;
     this.last_name = last_name;
     this.address = address;
     this.mobile_phone = mobile_phone;
     this.e_mail = e_mail;
     this.group=group;
+    this.id=id;
+
+  }
+
+  public ContactData( String first_name, String last_name, String address, String mobile_phone, String e_mail, String group) {
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.address = address;
+    this.mobile_phone = mobile_phone;
+    this.e_mail = e_mail;
+    this.group=group;
+    this.id=0;
+
   }
 
   public String getFirst_name() {
