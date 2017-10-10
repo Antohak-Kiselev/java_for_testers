@@ -7,8 +7,15 @@ public class ContactData {
   private final String mobile_phone;
   private final String e_mail;
   private  String group;
+  private int id;
 
+  public int getId() {
+    return id;
+  }
 
+  public void setId(int id) {
+    this.id = id;
+  }
 
   public ContactData(String first_name, String last_name, String address, String mobile_phone, String e_mail, String group) {
     this.first_name = first_name;
