@@ -20,7 +20,7 @@ app.getNavigationHelper().gotoHomePage();
   }
    List<ContactData> before=app.getContactHelper().getContactList();
    app.getContactHelper().selectContact(before.size()-1);
-   app.getContactHelper().initContactModification();
+  app.getContactHelper().initContactModificationById((before.get(before.size()-1).getId()));
    app.getContactHelper().deleteSelectedContact();
    app.getContactHelper().returnToHomePage();
 
