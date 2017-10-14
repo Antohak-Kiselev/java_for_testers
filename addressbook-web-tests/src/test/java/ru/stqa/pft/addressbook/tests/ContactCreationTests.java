@@ -5,15 +5,14 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
 
-  @Test
-  public void ContactCreationTests() {
-    app.getNavigationHelper().gotoHomePage();
+  @Test (enabled=false)
+  public void testContactCreation() {
+    app.goTo().gotoHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
     ContactData contact = new ContactData("test_first_name", "test_last_name", "test_adress", "891782324", "test_first_name.test_last_name@mail.ru", "test1");
     app.getContactHelper().createContact(contact);
