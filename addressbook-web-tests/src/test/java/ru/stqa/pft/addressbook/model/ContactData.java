@@ -1,18 +1,48 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-  private final String first_name;
-  private final String last_name;
-  private final String address;
-  private final String mobile_phone;
-  private final String e_mail;
+  private  int  id=Integer.MAX_VALUE;
+  private  String first_name;
+  private  String last_name;
+  private  String address;
+  private  String mobile_phone;
+  private  String e_mail;
   private  String group;
 
-  public void setId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
   }
 
-  private  int  id;
+  public ContactData withFirstName(String first_name) {
+    this.first_name = first_name;
+    return this;
+  }
+
+  public ContactData withLastName(String last_name) {
+    this.last_name = last_name;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobile_phone) {
+    this.mobile_phone = mobile_phone;
+    return this;
+  }
+
+  public ContactData withEmail(String e_mail) {
+    this.e_mail = e_mail;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
 
 
   public int getId() {
@@ -28,29 +58,7 @@ public class ContactData {
             '}';
   }
 
-  public ContactData(int id, String first_name, String last_name, String address, String mobile_phone, String e_mail, String group) {
-    this.first_name = first_name;
-    this.last_name = last_name;
-    this.address = address;
-    this.mobile_phone = mobile_phone;
-    this.e_mail = e_mail;
-    this.group=group;
-    this.id=id;
 
-  }
-
-
-
-  public ContactData(String first_name, String last_name, String address, String mobile_phone, String e_mail, String group) {
-    this.first_name = first_name;
-    this.last_name = last_name;
-    this.address = address;
-    this.mobile_phone = mobile_phone;
-    this.e_mail = e_mail;
-    this.group=group;
-    this.id=Integer.MAX_VALUE;
-
-  }
 
   public String getFirst_name() {
     return first_name;
