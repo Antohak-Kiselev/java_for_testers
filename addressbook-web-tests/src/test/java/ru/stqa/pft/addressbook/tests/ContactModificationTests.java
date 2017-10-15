@@ -7,6 +7,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Антон on 23.09.2017.
@@ -16,7 +17,7 @@ public class ContactModificationTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions(){
     app.goTo().HomePage();
-    if (app.contact().list().size()==0) {
+    if (app.contact().all().size()==0) {
       app.contact().create(new ContactData ().withFirstName("test_First_Name").withLastName("test_Last_name").
               withAddress("addressTest").withEmail("mail@ru.ru").withMobilePhone("89889934").withGroup("test1"));
 
@@ -28,23 +29,19 @@ public class ContactModificationTests extends TestBase {
   public void testContactModification() {
 
 
-    List<ContactData> before=app.contact().list();
-    ContactData contact=new ContactData ().withId(before.get(before.size()-1).getId()).withFirstName("test_First_Name").withLastName("test_Last_name").
+    Set<ContactData> before = app.contact().all();
+    ContactData modifiedContact=before.iterator().next();
+    ContactData contact=new ContactData ().withId(modifiedContact.getId()).withFirstName("test_First_Name").withLastName("test_Last_name").
             withAddress("addressTest").withEmail("mail@ru.ru").withMobilePhone("89889934").withGroup("test1");
-    int index=before.size()-1;
-    int idModifiedContact=before.get(index).getId();
-    app.contact().modify(idModifiedContact, contact, index);
-    List<ContactData> after=app.contact().list();
+
+    app.contact().modify(contact);
+    Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(),before.size());
 
-
-    before.remove(index);
+    before.remove(modifiedContact);
     before.add(contact);
-    Comparator<? super ContactData> ById=(c1,c2)->Integer.compare(c1.getId(),c2.getId());
-    before.sort(ById);
-    after.sort(ById);
     Assert.assertEquals(before,after);
-    System.out.println(app.contact().getIdContactWithHelpIndex(before.size()-1));
+
   }
 
 
