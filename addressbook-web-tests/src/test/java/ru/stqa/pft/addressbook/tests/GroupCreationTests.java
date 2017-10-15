@@ -24,11 +24,11 @@ public class GroupCreationTests extends TestBase {
 
   }
 
-  @Test(enabled=false)
+  @Test(enabled=true)
   public void testBadGroupCreation() {
     app.goTo().groupPage();
     Groups before = app.group().all();
-    GroupData group = new GroupData().withName("test");
+    GroupData group = new GroupData().withName("test'");
     app.group().create(group);
     assertThat(app.group().count(),equalTo(before.size() ));
     Groups after = app.group().all();
