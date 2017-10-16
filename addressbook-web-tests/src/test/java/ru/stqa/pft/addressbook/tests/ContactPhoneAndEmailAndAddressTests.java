@@ -60,8 +60,8 @@ public class ContactPhoneAndEmailAndAddressTests extends  TestBase {
         return Arrays.asList(contact.getE_mail(),contact.getEmail2(),contact.getEmail3())
                        .stream().
                                filter((s)->! s.equals("")).
-                        map(ContactPhoneAndEmailAndAddressTests::cleaned).
-                              collect(Collectors.joining("\n"));
+
+                        collect(Collectors.joining("\n"));
 
 
 
