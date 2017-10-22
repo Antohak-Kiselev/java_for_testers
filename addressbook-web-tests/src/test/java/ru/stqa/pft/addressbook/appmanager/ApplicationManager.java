@@ -8,15 +8,19 @@ import org.testng.annotations.AfterMethod;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.io.FileReader;
 import java.util.Objects;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import  java.io.*;
 
 /**
  * Created by Антон on 22.09.2017.
  */
 public class ApplicationManager {
+  private final Properties properties;
   WebDriver wd;
 
   private NavigationHelper navigationHelper;
@@ -28,10 +32,15 @@ public class ApplicationManager {
   public ApplicationManager(String browser) {
     this.browser = browser;
 
+    properties=new Properties();
+
   }
 
 
-  public void init() {
+  public void init()  throws  Exception {
+    String target=System.getProperty("target", "local");
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+
     if (browser.equals(BrowserType.FIREFOX)){
       System.setProperty("webdriver.gecko.driver", "D:\\geckodriver\\geckodriver.exe");
       wd = new FirefoxDriver();
@@ -42,12 +51,13 @@ public class ApplicationManager {
     }
 
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-    wd.get("http://localhost/addressbook/");
+    wd.get(properties.getProperty("Web.baseUrl")) ;
+
     groupHelper = new GroupHelper(wd);
     contactHelper=new ContactHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper= new SessionHelper(wd);
-    sessionHelper.login("admin", "secret");
+    sessionHelper.login(properties.getProperty("Web.adminLogin"),properties.getProperty("Web.adminPassword"));
   }
   public void stop() {
     wd.quit();
