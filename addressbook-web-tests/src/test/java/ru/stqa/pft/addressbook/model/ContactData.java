@@ -58,11 +58,7 @@ public class ContactData {
     return result;
   }
 
-  public ContactData withAllAddress(String allAddress) {
-    this.allAddress = allAddress;
-    return  this;
 
-  }
 
   public String getEmail2() {
     return email2;
