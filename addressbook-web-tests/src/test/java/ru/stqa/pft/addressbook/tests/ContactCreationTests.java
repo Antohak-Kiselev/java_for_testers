@@ -19,8 +19,7 @@ public class ContactCreationTests extends TestBase {
    Contacts before = app.contact().all();
     File photo=new File("src/test/resources/stru.png");
     ContactData contact = new ContactData ().withFirstName("test_First_Name").withLastName("test_Last_name").
-            withAddress("addressTest").withEmail("mail@ru.ru").withMobilePhone("89889934").withPhoto(photo).
-            withGroup("test1");
+            withAddress("addressTest").withEmail("mail@ru.ru").withMobilePhone("89889934").withPhoto(photo);
     app.contact().create(contact);
     assertEquals(app.contact().count(), before.size() + 1);
     Contacts after = app.contact().all();
