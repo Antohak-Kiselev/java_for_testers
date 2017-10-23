@@ -42,7 +42,7 @@ public class ApplicationManager {
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
     if (browser.equals(BrowserType.FIREFOX)){
-      System.setProperty("webdriver.gecko.driver", "D:\\geckodriver\\geckodriver.exe");
+      System.setProperty(properties.getProperty("Web.driver"), properties.getProperty("Web.pathToDriver"));
       wd = new FirefoxDriver();
     } else if (browser.equals(BrowserType.CHROME)){
       wd=new ChromeDriver();
