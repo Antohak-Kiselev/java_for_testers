@@ -38,7 +38,7 @@ public class ContactModificationTests extends TestBase {
     ContactData modifiedContact=before.iterator().next();
     File photo=new File("src/test/resources/stru.png");
     ContactData contact=new ContactData ().withId(modifiedContact.getId()).withFirstName("test_First_Name").withLastName("test_Last_name").
-            withAddress("addressTest").withEmail("mail@ru.ru").withMobilePhone("89889934").withGroup("test1").withPhoto(photo);;
+            withAddress("addressTest").withEmail("mail@ru.ru").withMobilePhone("89889934").withGroup("test1").withPhoto(photo).withHomePhone("").withWorkPhone("").withEmail2("").withEmail3("");
     app.goTo().HomePage();
     app.contact().modify(contact);
     assertThat(app.contact().count(),equalTo(before.size()));
