@@ -64,17 +64,24 @@ public class ContactData {
 
   @Column(name = "photo")
   @Type(type="text")
+
   private String photo;
 
-  public File getPhoto() {
-    return new File(photo);
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", first_name='" + first_name + '\'' +
+            ", last_name='" + last_name + '\'' +
+            ", address='" + address + '\'' +
+            ", mobile_phone='" + mobile_phone + '\'' +
+            ", e_mail='" + e_mail + '\'' +
+            ", homePhone='" + homePhone + '\'' +
+            ", workPhone='" + workPhone + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
+            '}';
   }
-
-  public ContactData withPhoto(File photo) {
-    this.photo = photo.getPath();
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -86,7 +93,13 @@ public class ContactData {
     if (id != that.id) return false;
     if (first_name != null ? !first_name.equals(that.first_name) : that.first_name != null) return false;
     if (last_name != null ? !last_name.equals(that.last_name) : that.last_name != null) return false;
-    return address != null ? address.equals(that.address) : that.address == null;
+    if (address != null ? !address.equals(that.address) : that.address != null) return false;
+    if (mobile_phone != null ? !mobile_phone.equals(that.mobile_phone) : that.mobile_phone != null) return false;
+    if (e_mail != null ? !e_mail.equals(that.e_mail) : that.e_mail != null) return false;
+    if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
+    if (workPhone != null ? !workPhone.equals(that.workPhone) : that.workPhone != null) return false;
+    if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
+    return email3 != null ? email3.equals(that.email3) : that.email3 == null;
   }
 
   @Override
@@ -95,7 +108,22 @@ public class ContactData {
     result = 31 * result + (first_name != null ? first_name.hashCode() : 0);
     result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
     result = 31 * result + (address != null ? address.hashCode() : 0);
+    result = 31 * result + (mobile_phone != null ? mobile_phone.hashCode() : 0);
+    result = 31 * result + (e_mail != null ? e_mail.hashCode() : 0);
+    result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
+    result = 31 * result + (workPhone != null ? workPhone.hashCode() : 0);
+    result = 31 * result + (email2 != null ? email2.hashCode() : 0);
+    result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     return result;
+  }
+
+  public File getPhoto() {
+    return new File(photo);
+  }
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo.getPath();
+    return this;
   }
 
 
@@ -193,15 +221,6 @@ public class ContactData {
 
   public int getId() {
     return id;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "first_name='" + first_name + '\'' +
-            ", last_name='" + last_name + '\'' +
-            ", id=" + id +
-            '}';
   }
 
 

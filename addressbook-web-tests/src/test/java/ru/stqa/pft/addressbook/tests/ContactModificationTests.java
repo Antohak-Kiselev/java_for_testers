@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 import static org.testng.Assert.assertEquals;
@@ -17,9 +19,12 @@ public class ContactModificationTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions(){
     app.goTo().HomePage();
-    if (app.contact().all().size()==0) {
+    File photo=new File("src/test/resources/stru.png");
+
+    if( app.db().contacts().size()==0){
       app.contact().create(new ContactData ().withFirstName("test_First_Name").withLastName("test_Last_name").
-              withAddress("addressTest").withEmail("mail@ru.ru").withMobilePhone("89889934").withGroup("test1"));
+              withAddress("addressTest").withEmail("mail@ru.ru").withMobilePhone("89889934").withGroup("test1").
+              withPhoto(photo));
 
     }
      }
@@ -28,16 +33,17 @@ public class ContactModificationTests extends TestBase {
   @Test  (enabled=true)
   public void testContactModification() {
 
-
-    Contacts before = app.contact().all();
+    app.goTo().HomePage();
+    Contacts before=app.db().contacts();
     ContactData modifiedContact=before.iterator().next();
+    File photo=new File("src/test/resources/stru.png");
     ContactData contact=new ContactData ().withId(modifiedContact.getId()).withFirstName("test_First_Name").withLastName("test_Last_name").
-            withAddress("addressTest").withEmail("mail@ru.ru").withMobilePhone("89889934").withGroup("test1");
-
+            withAddress("addressTest").withEmail("mail@ru.ru").withMobilePhone("89889934").withGroup("test1").withPhoto(photo);;
+    app.goTo().HomePage();
     app.contact().modify(contact);
     assertThat(app.contact().count(),equalTo(before.size()));
-    Contacts after = app.contact().all();
-    assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
+    Contacts after=app.db().contacts();
+    assertThat(after, equalTo(before.without(modifiedContact.withPhoto(photo)).withAdded(contact)));
 
   }
 

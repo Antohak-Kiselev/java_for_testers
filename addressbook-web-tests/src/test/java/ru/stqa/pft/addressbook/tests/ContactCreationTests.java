@@ -44,12 +44,12 @@ public class ContactCreationTests extends TestBase {
   @Test(enabled = true, dataProvider = "validContacts")
   public void testContactCreation(ContactData contact) {
     app.goTo().HomePage();
-   Contacts before = app.contact().all();
+    Contacts before=app.db().contacts();
     File photo=new File("src/test/resources/stru.png");
     contact.withPhoto(photo);
     app.contact().create(contact);
     assertEquals(app.contact().count(), before.size() + 1);
-    Contacts after = app.contact().all();
+    Contacts after=app.db().contacts();
     assertEquals(after.size(), before.size() + 1);
 
 
