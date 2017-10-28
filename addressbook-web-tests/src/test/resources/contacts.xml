@@ -5,11 +5,11 @@
     <address>test_address 0</address>
     <mobile__phone>8-917-243-54-0</mobile__phone>
     <e__mail>test_mail1_0@rambler.ru</e__mail>
-    <group>test1</group>
     <homePhone>8-917-567-65-0</homePhone>
     <workPhone>8-919-354-45-0</workPhone>
     <email2>test_mail2_0@mail.ru</email2>
     <email3>test_mail3_0@mail.ru</email3>
+    <groups/>
   </contact>
   <contact>
     <first__name>test_First_name 1</first__name>
@@ -17,10 +17,10 @@
     <address>test_address 1</address>
     <mobile__phone>8-917-243-54-1</mobile__phone>
     <e__mail>test_mail1_1@rambler.ru</e__mail>
-    <group>test1</group>
     <homePhone>8-917-567-65-1</homePhone>
     <workPhone>8-919-354-45-1</workPhone>
     <email2>test_mail2_1@mail.ru</email2>
     <email3>test_mail3_1@mail.ru</email3>
+    <groups/>
   </contact>
 </list>
