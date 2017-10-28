@@ -74,6 +74,7 @@ Logger logger= LoggerFactory.getLogger(GroupCreationTests.class);
 
     assertThat(after, equalTo(
             before.withAdded(group.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt()))));
+    verifyGroupListInUI();
     logger.info("Stop test testGroupCreation");
 
 
