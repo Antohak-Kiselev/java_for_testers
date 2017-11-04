@@ -16,7 +16,7 @@ public class ApplicationManager {
 
   private final Properties properties;
   private WebDriver wd;
-
+  private JamesHelper jamesHelper;
 
   private String browser;
   private RegistrationHelper registrationHelper;
@@ -117,5 +117,11 @@ public class ApplicationManager {
   public DbHelper db() {
     return dbHelper;
   }
+  public JamesHelper james() {
+        if (jamesHelper == null) {
+            jamesHelper = new JamesHelper(this);
+          }
+        return jamesHelper;
+      }
 
 }
