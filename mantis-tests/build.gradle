@@ -16,6 +16,7 @@ dependencies {
     compile 'org.hibernate:hibernate-core:5.2.8.Final'
     compile 'com.thoughtworks.xstream:xstream:1.4.9'
     compile 'com.google.code.gson:gson:2.8.0'
+    compile 'biz.futureware.mantis:mantis-axis-soap-client:1.2.19'
 
 
 
