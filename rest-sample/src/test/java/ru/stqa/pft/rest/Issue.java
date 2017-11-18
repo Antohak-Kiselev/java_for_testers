@@ -5,6 +5,16 @@ public class Issue {
   private String subject;
   private String description;
 
+  @Override
+  public String toString() {
+    return "Issue{" +
+            "id=" + id +
+            ", subject='" + subject + '\'' +
+            ", description='" + description + '\'' +
+            ", state_name='" + state_name + '\'' +
+            '}';
+  }
+
   public String getState_name() {
     return state_name;
   }
@@ -41,15 +51,6 @@ public class Issue {
     this.description = description;
     return this;
 
-  }
-
-  @Override
-  public String toString() {
-    return "Issue{" +
-            "id=" + id +
-            ", subject='" + subject + '\'' +
-            ", description='" + description + '\'' +
-            '}';
   }
 
   @Override
