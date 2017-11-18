@@ -8,6 +8,7 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+
 import java.io.File;
 import java.io.FileReader;
 import java.net.URL;
@@ -51,6 +52,7 @@ public class ApplicationManager {
       }
     }  else {
       DesiredCapabilities capabilities=new DesiredCapabilities();
+      capabilities.setBrowserName(browser);
       wd=new RemoteWebDriver(new URL(properties.getProperty("selenium.server")),capabilities);
 
     }
